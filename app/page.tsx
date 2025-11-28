@@ -3,7 +3,7 @@ import landromat from "@/public/laundry-bg.jpg";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black  overflow-hidden">
+    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black  overflow-hidden px-6">
       <Image
         alt="Landromat"
         src={landromat}
@@ -21,10 +21,20 @@ export default function Home() {
         </p>
         <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
           Bring The Landromat into{" "}
-          <span className="underline decoration-indigo-400 decoration-4 underline-offset-4">
+          <span className="underline decoration-red-400 decoration-4 underline-offset-4">
             Your Home
           </span>
         </h1>
+
+        <p className="max-w-xl text-base text-zinc-200 sm:text-lg">
+          Drop off your clothes from anywhere. Real time tracking, automated
+          alerts and agentic voice booking.
+        </p>
+        <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+          <button className="rounded-full px-6 py-3 text-sm font-semibold shadow-lg ring-1 ring-red-400 hover:bg-red-600  bg-red-500">
+            Make a Dropoff
+          </button>
+        </div>
       </div>
     </div>
   );
