@@ -1,5 +1,6 @@
 import Image from "next/image";
 import landromat from "@/public/laundry-bg.jpg";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -32,7 +33,7 @@ export default function Home() {
         </p>
         <div className="mt-4 flex flex-col gap-3 sm:flex-row">
           <button className="rounded-full px-6 py-3 text-sm font-semibold shadow-lg ring-1 ring-red-400 hover:bg-red-600  bg-red-500">
-            Make a Dropoff
+            <Link href="/dropoff">Make a Dropoff</Link>
           </button>
         </div>
       </div>
