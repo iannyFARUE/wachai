@@ -74,41 +74,118 @@ export default function Dropoff() {
               </div>
             </div>
           </div>
+          {/* Address block */}
           <div className="pt-4 border-t border-zinc-800/70 space-y-4">
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 mb-3">
               Address Information
             </p>
-            <div className="flex flex-col gap-1.5">
-              <label
-                htmlFor="streetAddress"
-                className="text-sm font-medium text-zinc-100"
-              >
-                Street Adress
-              </label>
-              <input
-                type="text"
-                id="streetAddress"
-                name="streetAddress"
-                className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
-                autoComplete="street-address"
-                placeholder="123 Main St"
-              />
+
+            {/* Street + Apartment */}
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex flex-col gap-1.5 md:flex-1">
+                <label
+                  htmlFor="streetAddress"
+                  className="text-sm font-medium text-zinc-100"
+                >
+                  Street Adress
+                </label>
+                <input
+                  type="text"
+                  id="streetAddress"
+                  name="streetAddress"
+                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  autoComplete="address-line1"
+                  placeholder="123 Main St"
+                />
+              </div>
+              <div className="flex flex-col gap-1.5 md:flex-1">
+                <label
+                  htmlFor="apartment"
+                  className="text-sm font-medium text-zinc-100"
+                >
+                  Apartment/Suite(Optional)
+                </label>
+                <input
+                  type="text"
+                  id="apartment"
+                  name="apartment"
+                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  autoComplete="address-line2"
+                  placeholder="Apt-4B"
+                />
+              </div>
             </div>
-            <div className="flex flex-col gap-1.5">
-              <label
-                htmlFor="streetAddress"
-                className="text-sm font-medium text-zinc-100"
-              >
-                Apartment/Suite(Optional)
-              </label>
-              <input
-                type="text"
-                id="streetAddress"
-                name="streetAddress"
-                className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
-                autoComplete="street-address"
-                placeholder="123 Main St"
-              />
+
+            {/* City and State block */}
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex flex-col gap-1.5 md:flex-1">
+                <label
+                  htmlFor="city"
+                  className="text-sm font-medium text-zinc-100"
+                >
+                  City
+                </label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  autoComplete="address-level2"
+                  placeholder="New York"
+                />
+              </div>
+              <div className="flex flex-col gap-1.5 md:flex-1">
+                <label
+                  htmlFor="state"
+                  className="text-sm font-medium text-zinc-100"
+                >
+                  State
+                </label>
+                <input
+                  type="text"
+                  id="state"
+                  name="state"
+                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  autoComplete="address-level1"
+                  placeholder="NY"
+                />
+              </div>
+            </div>
+
+            {/* Zip + Country */}
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex flex-col gap-1.5 md:flex-1">
+                <label
+                  htmlFor="zipCode"
+                  className="text-sm font-medium text-zinc-100"
+                >
+                  Zip Code
+                </label>
+                <input
+                  type="text"
+                  id="zipCode"
+                  name="zipCode"
+                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  autoComplete="postal-code"
+                  placeholder="10001"
+                />
+              </div>
+              <div className="flex flex-col gap-1.5 md:flex-1">
+                <label
+                  htmlFor="country"
+                  className="text-sm font-medium text-zinc-100"
+                >
+                  Country
+                </label>
+                <input
+                  type="text"
+                  id="country"
+                  name="country"
+                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  autoComplete="country-name"
+                  placeholder="United States"
+                />
+              </div>
             </div>
           </div>
           {/* Preferences */}
