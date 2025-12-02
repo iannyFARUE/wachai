@@ -4,81 +4,166 @@ import Image from "next/image";
 
 export default function Dropoff() {
   return (
-    <div className="w-full min-h-screen relative flex justify-center items-center">
-      <Image src={laundromat} fill alt="Landromat" />
-      <div className="bg-black/50 absolute inset-0" />
-      <form className="bg-zinc-200 z-10 rounded-xl px-6 py-6 max-w-md w-full">
-        <h2 className="font-bold text-zinc-700 text-xl tracking-normal mb-4 max-w-3xl">
+    <div className="relative flex min-h-screen  w-full justify-center items-center">
+      {/* Background image */}
+      <Image
+        src={laundromat}
+        fill
+        alt="Customer dropping off laundry at laundromat"
+        className="object-cover"
+        priority
+      />
+
+      <div className="bg-black/60 absolute inset-0" />
+      {/* Card */}
+      <form className="relative z-10 w-full max-w-lg bg-zinc-950/70 shadow-2xl backdrop-blur-xl border border-white/10 text-zinc-50 rounded-2xl px-6 py-7 ">
+        {/* <h2 className="font-bold text-zinc-700 text-xl tracking-normal mb-4 max-w-3xl">
           Make booking
-        </h2>
-        <div className="flex gap-3 flex-col mt-8">
-          <label htmlFor="name" className="font-semibold text-zinc-700">
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            className="border-2 px-2 py-2 w-full rounded-lg border-zinc-400"
-          />
+        </h2> */}
+        {/* Header */}
+        <div className="mb-6">
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-indigo-300">
+            Drop-off booking
+          </p>
+          <h2 className="mt-2 text-2xl font-semibold leading-tight">
+            Digitize your laundry drop-off
+          </h2>
+          <p className="mt-1 text-sm text-zinc-300">
+            Tell us where to pick up and how you like your clothes handled
+          </p>
         </div>
-        <div className="flex gap-3 flex-col mt-8">
-          <label htmlFor="address" className="font-semibold text-zinc-700 ">
-            Address
-          </label>
-          <input
-            type="text"
-            id="address"
-            name="address"
-            className="border-2 py-2 w-full rounded-lg border-zinc-400"
-          />
-        </div>
-        <div className="flex gap-3 flex-col mt-8">
-          <label htmlFor="phone" className="font-semibold text-zinc-700 ">
-            Phone Number
-          </label>
-          <input
-            type="text"
-            id="phone"
-            name="phone"
-            className="border-2 py-2 w-full rounded-lg border-zinc-400"
-          />
-        </div>
-        <div className="mt-8">
-          <p className="font-semibold text-zinc-700 ">Special Instructions</p>
-          <div className="flex gap-6">
-            <div className="flex gap-6">
-              <label className="inline-flex items-center gap-2 text-zinc-700 ">
-                Separate wash
+
+        {/* Customer Details  */}
+        <div className="space-y-4">
+          <div>
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-400 mb-1">
+              Customer Details
+            </p>
+            <div className="space-y-4">
+              <div className="flex flex-col gap-1.5">
+                <label
+                  htmlFor="name"
+                  className="text-sm font-medium text-zinc-100"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  autoComplete="name"
+                  placeholder="Jane Doe"
+                />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <label
+                  htmlFor="name"
+                  className="text-sm font-medium text-zinc-100"
+                >
+                  Phone
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  autoComplete="tel"
+                  placeholder="+1 (555) 123-4567"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="pt-4 border-t border-zinc-800/70 space-y-4">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 mb-3">
+              Address Information
+            </p>
+            <div className="flex flex-col gap-1.5">
+              <label
+                htmlFor="streetAddress"
+                className="text-sm font-medium text-zinc-100"
+              >
+                Street Adress
               </label>
               <input
-                type="checkbox"
-                name="separateWash"
-                className="h-4 w-4 border-2 rounded border-zinc-400"
+                type="text"
+                id="streetAddress"
+                name="streetAddress"
+                className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                autoComplete="street-address"
+                placeholder="123 Main St"
               />
             </div>
-            <div className="flex">
-              <label className="font-semibold text-zinc-500 ">Hand dried</label>
+            <div className="flex flex-col gap-1.5">
+              <label
+                htmlFor="streetAddress"
+                className="text-sm font-medium text-zinc-100"
+              >
+                Apartment/Suite(Optional)
+              </label>
               <input
-                type="checkbox"
-                className="border-2 py-2 w-full rounded-lg border-zinc-400"
+                type="text"
+                id="streetAddress"
+                name="streetAddress"
+                className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                autoComplete="street-address"
+                placeholder="123 Main St"
+              />
+            </div>
+          </div>
+          {/* Preferences */}
+          <div className="pt-4 border-t border-zinc-800/70">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 mb-3">
+              Laundry Preferences
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <label className="inline-flex items-center gap-2 rounded-full border border-zinc-600 bg-zinc-900/60 px-3 py-1.5 text-sm text-zinc-100 cursor-pointer hover:border-indigo-400 hover:bg-zinc-900">
+                <input
+                  type="checkbox"
+                  name="separateWash"
+                  className="h-4 w-4 rounded border-zinc-500 bg-zinc-900 text-indigo-500 focus:ring-indigo-500"
+                />
+                <span>Separate Wash</span>
+              </label>
+              <label className="inline-flex items-center gap-2 rounded-full border border-zinc-600 bg-zinc-900/60 px-3 py-1.5 text-sm text-zinc-100 cursor-pointer hover:border-indigo-400 hover:bg-zinc-900">
+                <input
+                  type="checkbox"
+                  name="separateWash"
+                  className="h-4 w-4 rounded border-zinc-500 bg-zinc-900 text-indigo-500 focus:ring-indigo-500"
+                />
+                <span>Hand dried</span>
+              </label>
+            </div>
+            <div className="mt-4 flex flex-col gap-1.5">
+              <label
+                htmlFor="additionalInfo"
+                className="text-sm font-medium text-zinc-100"
+              >
+                Additional information
+              </label>
+              <textarea
+                name="additionalInfo"
+                id="additionalInfo"
+                rows={3}
+                className="w-full rounded-lg border border-zinc-600 bg-zinc-900/60 px-3 py-2 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                placeholder="e.g allergies, detergent preferences, gate code.."
               />
             </div>
           </div>
         </div>
-        <div className="flex gap-3 flex-col mt-8">
-          <label htmlFor="details" className="font-semibold text-zinc-700 ">
-            Additional Information
-          </label>
-          <textarea
-            name="details"
-            id="details"
-            className="border-2 py-2 w-full rounded-lg border-zinc-400"
-          ></textarea>
+        {/* CTA */}
+        <div className="mt-6 flex flex-col gap-2">
+          <button
+            type="submit"
+            className="inline-flex w-full items-center justify-center bg-indigo-500 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 focus:ring-offset-zinc-950"
+          >
+            Confirm drop-off request
+          </button>
+          <p className="text-xs text-zinc-400">
+            Yo'll get an SMS confirmation once your booking is received
+          </p>
         </div>
-        <button className="bg-indigo-600 text-white px-6 py-2 rounded-sm mt-6 hover:bg-indigo-900">
-          Submit
-        </button>
       </form>
     </div>
   );
