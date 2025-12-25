@@ -1,8 +1,17 @@
 import React from "react";
 import laundromat from "@/public/laundry-bg.jpg";
 import Image from "next/image";
+import { log } from "console";
 
 export default function Dropoff() {
+  function saveBooking(formData: FormData) {
+    "use server";
+
+    const name = formData.get("name");
+    const phone = formData.get("phone");
+    console.log(name, phone);
+  }
+
   return (
     <div className="relative flex min-h-screen  w-full justify-center items-center">
       {/* Background image */}
@@ -16,7 +25,10 @@ export default function Dropoff() {
 
       <div className="bg-black/60 absolute inset-0" />
       {/* Card */}
-      <form className="relative z-10 w-full max-w-lg bg-zinc-950/70 shadow-2xl backdrop-blur-xl border border-white/10 text-zinc-50 rounded-2xl px-6 py-7 ">
+      <form
+        action={saveBooking}
+        className="relative z-10 w-full max-w-lg bg-zinc-950/70 shadow-2xl backdrop-blur-xl border border-white/10 text-zinc-50 rounded-2xl px-6 py-7 "
+      >
         {/* <h2 className="font-bold text-zinc-700 text-xl tracking-normal mb-4 max-w-3xl">
           Make booking
         </h2> */}
