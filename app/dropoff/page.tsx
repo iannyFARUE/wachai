@@ -9,6 +9,11 @@ export default function Dropoff() {
 
     const name = formData.get("name");
     const phone = formData.get("phone");
+    const streetAddress = formData.get("streetAddress");
+    const apartment = formData.get("apartment");
+    const city = formData.get("city");
+    const zipCode = formData.get("zipCode");
+
     console.log(name, phone);
   }
 
