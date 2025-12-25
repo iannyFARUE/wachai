@@ -1,22 +1,10 @@
 import React from "react";
 import laundromat from "@/public/laundry-bg.jpg";
 import Image from "next/image";
-import { log } from "console";
+import { createBooking } from "@/app/actions";
+import LaundryPreferrenceGroup from "./LaundryPreferrenceGroup";
 
 export default function Dropoff() {
-  function saveBooking(formData: FormData) {
-    "use server";
-
-    const name = formData.get("name");
-    const phone = formData.get("phone");
-    const streetAddress = formData.get("streetAddress");
-    const apartment = formData.get("apartment");
-    const city = formData.get("city");
-    const zipCode = formData.get("zipCode");
-
-    console.log(name, phone);
-  }
-
   return (
     <div className="relative flex min-h-screen  w-full justify-center items-center">
       {/* Background image */}
@@ -31,7 +19,7 @@ export default function Dropoff() {
       <div className="bg-black/60 absolute inset-0" />
       {/* Card */}
       <form
-        action={saveBooking}
+        action={createBooking}
         className="relative z-10 w-full max-w-lg bg-zinc-950/70 shadow-2xl backdrop-blur-xl border border-white/10 text-zinc-50 rounded-2xl px-6 py-7 "
       >
         {/* <h2 className="font-bold text-zinc-700 text-xl tracking-normal mb-4 max-w-3xl">
@@ -210,25 +198,7 @@ export default function Dropoff() {
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 mb-3">
               Laundry Preferences
             </p>
-
-            <div className="flex flex-wrap gap-3">
-              <label className="inline-flex items-center gap-2 rounded-full border border-zinc-600 bg-zinc-900/60 px-3 py-1.5 text-sm text-zinc-100 cursor-pointer hover:border-indigo-400 hover:bg-zinc-900">
-                <input
-                  type="checkbox"
-                  name="separateWash"
-                  className="h-4 w-4 rounded border-zinc-500 bg-zinc-900 text-indigo-500 focus:ring-indigo-500"
-                />
-                <span>Separate Wash</span>
-              </label>
-              <label className="inline-flex items-center gap-2 rounded-full border border-zinc-600 bg-zinc-900/60 px-3 py-1.5 text-sm text-zinc-100 cursor-pointer hover:border-indigo-400 hover:bg-zinc-900">
-                <input
-                  type="checkbox"
-                  name="separateWash"
-                  className="h-4 w-4 rounded border-zinc-500 bg-zinc-900 text-indigo-500 focus:ring-indigo-500"
-                />
-                <span>Hand dried</span>
-              </label>
-            </div>
+            <LaundryPreferrenceGroup />
             <div className="mt-4 flex flex-col gap-1.5">
               <label
                 htmlFor="additionalInfo"
