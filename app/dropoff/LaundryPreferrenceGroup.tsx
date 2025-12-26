@@ -12,13 +12,15 @@ export default function LaundryPreferrenceGroup() {
   const handleChange = (key: LaundryPreferences) => {
     setPreferences((prev) => ({
       ...prev,
-      [key]: !preferences[key],
+      [key]: !prev[key],
     }));
   };
 
   return (
     <div className="flex flex-wrap gap-3">
-      {Object.entries(preferences).map(([key, value]) => (
+      {(
+        Object.entries(preferences) as Array<[LaundryPreferences, boolean]>
+      ).map(([key, value]) => (
         <div
           key={key}
           className="inline-flex items-center gap-2 rounded-full border border-zinc-600 bg-zinc-900/60 px-3 py-1.5 text-sm text-zinc-100 cursor-pointer hover:border-indigo-400 hover:bg-zinc-900"
@@ -28,6 +30,7 @@ export default function LaundryPreferrenceGroup() {
             type="checkbox"
             checked={value}
             id={key}
+            name={key}
             onChange={() => handleChange(key)}
             className="h-4 w-4 rounded border-zinc-500 bg-zinc-900 text-indigo-500 focus:ring-indigo-500"
           />
