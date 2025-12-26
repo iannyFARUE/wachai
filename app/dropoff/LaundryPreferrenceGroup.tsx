@@ -1,16 +1,18 @@
 "use client";
 import { useState } from "react";
 import { getLabelFromKey } from "@/app/lib/utils";
+
+type LaundryPreferences = "separateWash" | "handDried";
 export default function LaundryPreferrenceGroup() {
   const [preferences, setPreferences] = useState({
     separateWash: false,
     handDried: false,
   });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (key: LaundryPreferences) => {
     setPreferences((prev) => ({
       ...prev,
-      [event.target.name]: event.target.checked,
+      [key]: !preferences[key],
     }));
   };
 
@@ -26,7 +28,7 @@ export default function LaundryPreferrenceGroup() {
             type="checkbox"
             checked={value}
             id={key}
-            onChange={handleChange}
+            onChange={() => handleChange(key)}
             className="h-4 w-4 rounded border-zinc-500 bg-zinc-900 text-indigo-500 focus:ring-indigo-500"
           />
           <label htmlFor={key}>{getLabelFromKey(key)}</label>

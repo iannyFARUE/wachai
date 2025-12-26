@@ -1,5 +1,6 @@
 "use server";
 export async function createBooking(formData: FormData) {
+  console.log(formData);
   const booking = {
     name: formData.get("name"),
     phone: formData.get("phone"),
@@ -10,8 +11,8 @@ export async function createBooking(formData: FormData) {
     zipCode: formData.get("zipCode"),
     country: formData.get("country"),
     additionalInfo: formData.get("additionalInfo"),
-    separateWash: formData.get("separateWash") == "on",
-    handDried: formData.get("handDried") == "on",
+    separateWash: formData.get("separateWash"),
+    handDried: formData.get("handDried"),
   };
 
   console.log(booking);
