@@ -63,7 +63,7 @@ export default function Dropoff() {
               </div>
               <div className="flex flex-col gap-1.5">
                 <label
-                  htmlFor="name"
+                  htmlFor="phone"
                   className="text-sm font-medium text-zinc-100"
                 >
                   Phone
@@ -74,6 +74,22 @@ export default function Dropoff() {
                   name="phone"
                   className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
                   autoComplete="tel"
+                  placeholder="+1 (555) 123-4567"
+                />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <label
+                  htmlFor="email"
+                  className="text-sm font-medium text-zinc-100"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  autoComplete="email"
                   placeholder="+1 (555) 123-4567"
                 />
               </div>
