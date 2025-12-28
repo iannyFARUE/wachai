@@ -20,6 +20,12 @@ const userSchema = z.object({
   name: z.string().min(1, "Name is required"),
 });
 
+const dropOffSchema = z.object({
+  separateWash: z.boolean(),
+  additionalInfo: z.string().optional(),
+  handDried: z.boolean(),
+});
+
 export async function createBooking(formData: FormData) {
   try {
     const booking: Prisma.UserCreateInput = {
