@@ -90,7 +90,7 @@ export default function Dropoff() {
                   name="email"
                   className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
                   autoComplete="email"
-                  placeholder="+1 (555) 123-4567"
+                  placeholder="a@b.com"
                 />
               </div>
             </div>

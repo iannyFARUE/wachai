@@ -33,10 +33,11 @@ export async function createBooking(formData: FormData) {
     revalidatePath("/");
     redirect("/");
   } catch (err) {
-    if (err instanceof Prisma.PrismaClientKnownRequestError) {
-      if (err.code === "P2002") {
-        return { ok: false, error: "Email already exists" };
-      }
+    if (
+      err instanceof Prisma.PrismaClientKnownRequestError &&
+      err.code === "P2002"
+    ) {
+      throw new Error("Email already exists");
     }
     throw err; // unexpected error
   }
