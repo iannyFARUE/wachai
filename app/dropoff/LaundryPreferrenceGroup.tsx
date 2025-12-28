@@ -30,7 +30,6 @@ export default function LaundryPreferrenceGroup() {
             type="checkbox"
             checked={value}
             id={key}
-            name={key}
             onChange={() => handleChange(key)}
             className="h-4 w-4 rounded border-zinc-500 bg-zinc-900 text-indigo-500 focus:ring-indigo-500"
           />

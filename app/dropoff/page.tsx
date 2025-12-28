@@ -1,10 +1,18 @@
-import React from "react";
+"use client";
+import React, { useActionState } from "react";
 import laundromat from "@/public/laundry-bg.jpg";
 import Image from "next/image";
-import { createBooking } from "@/app/actions";
+import { createBooking } from "@/app/actions/bookings";
 import LaundryPreferrenceGroup from "./LaundryPreferrenceGroup";
+import { ActionResponse } from "../types/dropoff";
+
+const initalState: ActionResponse = {
+  success: false,
+  message: "",
+};
 
 export default function Dropoff() {
+  const [state, action, isPending] = useActionState(createBooking, initalState);
   return (
     <div className="relative flex min-h-screen  w-full justify-center items-center">
       {/* Background image */}
@@ -19,7 +27,7 @@ export default function Dropoff() {
       <div className="bg-black/60 absolute inset-0" />
       {/* Card */}
       <form
-        action={createBooking}
+        action={action}
         className="relative z-10 w-full max-w-lg bg-zinc-950/70 shadow-2xl backdrop-blur-xl border border-white/10 text-zinc-50 rounded-2xl px-6 py-7 "
       >
         {/* <h2 className="font-bold text-zinc-700 text-xl tracking-normal mb-4 max-w-3xl">
