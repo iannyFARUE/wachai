@@ -11,14 +11,14 @@ import { log } from "console";
 const bookingFormSchema = z.object({
   email: z.email(),
   name: z.string().min(1, "Name is required"),
-  phone: z.string().min(7),
+  phone: z.string().min(7, "Phone is required"),
 
-  streetAddress: z.string().min(1),
+  streetAddress: z.string().min(1, "Street is required"),
   apartment: z.string().optional(),
-  city: z.string().min(1),
-  state: z.string().min(1),
-  zipCode: z.string().regex(/^\d{5}$/),
-  country: z.string().min(1),
+  city: z.string().min(1, "City is required"),
+  state: z.string().min(1, "State is required"),
+  zipCode: z.string().regex(/^\d{5}$/, "Invalid zip code"),
+  country: z.string().min(3, "Country is required"),
 
   separateWash: z.coerce.boolean().default(false),
   handDried: z.coerce.boolean().default(false),

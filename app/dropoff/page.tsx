@@ -5,6 +5,7 @@ import Image from "next/image";
 import { createBooking } from "@/app/actions/bookings";
 import LaundryPreferrenceGroup from "./LaundryPreferrenceGroup";
 import { ActionResponse } from "../types/dropoff";
+import { ClipLoader } from "react-spinners";
 
 const initalState: ActionResponse = {
   success: false,
@@ -28,7 +29,7 @@ export default function Dropoff() {
       {/* Card */}
       <form
         action={action}
-        className="relative z-10 w-full max-w-lg bg-zinc-950/70 shadow-2xl backdrop-blur-xl border border-white/10 text-zinc-50 rounded-2xl px-6 py-7 "
+        className="relative z-10 w-full max-w-lg bg-zinc-950/70 shadow-2xl backdrop-blur-xl border border-white/10 text-zinc-50 rounded-2xl px-6 py-7  m-8"
       >
         {/* <h2 className="font-bold text-zinc-700 text-xl tracking-normal mb-4 max-w-3xl">
           Make booking
@@ -64,10 +65,18 @@ export default function Dropoff() {
                   type="text"
                   id="name"
                   name="name"
-                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  className={`
+                  } border px-3 py-2 w-full rounded-lg  bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70 ${
+                    state?.errors?.name ? "border-red-400" : "border-zinc-600"
+                  } `}
                   autoComplete="name"
                   placeholder="Jane Doe"
                 />
+                {state?.errors?.name && (
+                  <p id="name-error" className="text-sm text-red-400">
+                    {state.errors.name[0]}
+                  </p>
+                )}
               </div>
               <div className="flex flex-col gap-1.5">
                 <label
@@ -80,10 +89,17 @@ export default function Dropoff() {
                   type="tel"
                   id="phone"
                   name="phone"
-                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  className={`border px-3 py-2 w-full rounded-lg  bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70 ${
+                    state?.errors?.phone ? "border-red-400" : "border-zinc-600"
+                  }`}
                   autoComplete="tel"
                   placeholder="+1 (555) 123-4567"
                 />
+                {state?.errors?.phone && (
+                  <p className="text-sm text-red-400">
+                    {state.errors.phone[0]}
+                  </p>
+                )}
               </div>
               <div className="flex flex-col gap-1.5">
                 <label
@@ -96,10 +112,17 @@ export default function Dropoff() {
                   type="email"
                   id="email"
                   name="email"
-                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  className={`border px-3 py-2 w-full rounded-lg  bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70 ${
+                    state?.errors?.email ? "border-red-400" : "border-zinc-600"
+                  }`}
                   autoComplete="email"
                   placeholder="a@b.com"
                 />
+                {state?.errors?.email && (
+                  <p className="text-sm text-red-400">
+                    {state.errors.email[0]}
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -122,10 +145,19 @@ export default function Dropoff() {
                   type="text"
                   id="streetAddress"
                   name="streetAddress"
-                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  className={`border px-3 py-2 w-full rounded-lg  bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70 ${
+                    state?.errors?.streetAddress
+                      ? "border-red-400"
+                      : "border-zinc-600"
+                  }`}
                   autoComplete="address-line1"
                   placeholder="123 Main St"
                 />
+                {state?.errors?.streetAddress && (
+                  <p className="text-sm text-red-400">
+                    {state.errors.streetAddress[0]}
+                  </p>
+                )}
               </div>
               <div className="flex flex-col gap-1.5 md:flex-1">
                 <label
@@ -138,10 +170,19 @@ export default function Dropoff() {
                   type="text"
                   id="apartment"
                   name="apartment"
-                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  className={`border px-3 py-2 w-full rounded-lg  bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70 ${
+                    state?.errors?.apartment
+                      ? "border-red-400"
+                      : "border-zinc-600"
+                  }`}
                   autoComplete="address-line2"
                   placeholder="Apt-4B"
                 />
+                {state?.errors?.apartment && (
+                  <p className="text-sm text-red-400">
+                    {state.errors.apartment[0]}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -158,10 +199,15 @@ export default function Dropoff() {
                   type="text"
                   id="city"
                   name="city"
-                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  className={`border px-3 py-2 w-full rounded-lg  bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70 ${
+                    state?.errors?.city ? "border-red-400" : "border-zinc-600"
+                  }`}
                   autoComplete="address-level2"
                   placeholder="New York"
                 />
+                {state?.errors?.city && (
+                  <p className="text-sm text-red-400">{state.errors.city[0]}</p>
+                )}
               </div>
               <div className="flex flex-col gap-1.5 md:flex-1">
                 <label
@@ -174,10 +220,17 @@ export default function Dropoff() {
                   type="text"
                   id="state"
                   name="state"
-                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  className={`border px-3 py-2 w-full rounded-lg  bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70 ${
+                    state?.errors?.state ? "border-red-400" : "border-zinc-600"
+                  }`}
                   autoComplete="address-level1"
                   placeholder="NY"
                 />
+                {state?.errors?.state && (
+                  <p className="text-sm text-red-400">
+                    {state.errors.state[0]}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -194,10 +247,19 @@ export default function Dropoff() {
                   type="text"
                   id="zipCode"
                   name="zipCode"
-                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  className={`border px-3 py-2 w-full rounded-lg  bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70 ${
+                    state?.errors?.zipCode
+                      ? "border-red-400"
+                      : "border-zinc-600"
+                  }`}
                   autoComplete="postal-code"
                   placeholder="10001"
                 />
+                {state?.errors?.zipCode && (
+                  <p className="text-sm text-red-400">
+                    {state.errors.zipCode[0]}
+                  </p>
+                )}
               </div>
               <div className="flex flex-col gap-1.5 md:flex-1">
                 <label
@@ -210,10 +272,19 @@ export default function Dropoff() {
                   type="text"
                   id="country"
                   name="country"
-                  className="border px-3 py-2 w-full rounded-lg border-zinc-600 bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                  className={`border px-3 py-2 w-full rounded-lg  bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70 ${
+                    state?.errors?.country
+                      ? "border-red-400"
+                      : "border-zinc-600"
+                  }`}
                   autoComplete="country-name"
                   placeholder="United States"
                 />
+                {state?.errors?.country && (
+                  <p className="text-sm text-red-400">
+                    {state.errors.country[0]}
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -234,9 +305,18 @@ export default function Dropoff() {
                 name="additionalInfo"
                 id="additionalInfo"
                 rows={3}
-                className="w-full rounded-lg border border-zinc-600 bg-zinc-900/60 px-3 py-2 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
+                className={`border px-3 py-2 w-full rounded-lg  bg-zinc-900/60 text-sm text-zinc-50 placeholder:text-zinc-500 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70 ${
+                  state?.errors?.additionalInfo
+                    ? "border-red-400"
+                    : "border-zinc-600"
+                }`}
                 placeholder="e.g allergies, detergent preferences, gate code.."
               />
+              {state?.errors?.additionalInfo && (
+                <p className="text-sm text-red-400">
+                  {state.errors.additionalInfo[0]}
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -244,9 +324,10 @@ export default function Dropoff() {
         <div className="mt-6 flex flex-col gap-2">
           <button
             type="submit"
+            disabled={isPending}
             className="inline-flex w-full items-center justify-center bg-indigo-500 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 focus:ring-offset-zinc-950"
           >
-            Confirm drop-off request
+            {isPending ? <ClipLoader /> : "Confirm drop-off request"}
           </button>
           <p className="text-xs text-zinc-400">
             Yo'll get an SMS confirmation once your booking is received
