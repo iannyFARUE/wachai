@@ -49,6 +49,9 @@ export default function Dropoff() {
 
         {/* Customer Details  */}
         <div className="space-y-4">
+          {state?.message && (
+            <p className="text-sm text-red-400">{state.message}</p>
+          )}
           <div>
             <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-400 mb-1">
               Customer Details

@@ -24,7 +24,7 @@ const userData: Prisma.UserCreateInput[] = [
         country: "United States",
       },
     },
-    dropoff: {
+    dropoffs: {
       create: {
         separateWash: true,
         handDried: true,
@@ -45,7 +45,7 @@ const userData: Prisma.UserCreateInput[] = [
         country: "United States",
       },
     },
-    dropoff: {
+    dropoffs: {
       create: {
         separateWash: true,
         handDried: false,

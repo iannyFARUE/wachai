@@ -19,7 +19,7 @@ model User {
   name String?
   phoneNumber String @unique
   address Address?
-  dropoff DropOff?
+  dropoffs DropOff[]
 }
 
 model Address {
@@ -39,7 +39,7 @@ model DropOff {
   separateWash Boolean
   handDried Boolean
   notes String
-  userId Int @unique
+  userId Int
   user User @relation(fields: [userId],references: [id])
 }
 

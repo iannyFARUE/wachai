@@ -3,10 +3,11 @@ import prisma from "@/lib/prisma";
 import { Prisma } from "../generated/prisma/client";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { success, z } from "zod";
+import { email, success, z } from "zod";
 import { formDataToObject } from "@/app/lib/utils";
 import { ActionResponse, DropOffFormData } from "../types/dropoff";
 import { log } from "console";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
 
 const bookingFormSchema = z.object({
   email: z.email(),
@@ -45,34 +46,83 @@ export async function createBooking(
 
     const data = validatedData.data;
 
-    const booking: Prisma.UserCreateInput = {
-      email: data.email,
-      name: data.name,
-      phoneNumber: data.phone,
-      address: {
-        create: {
-          streetAddress: data.streetAddress,
-          city: data.city,
-          state: data.state,
-          zipCode: data.zipCode,
-          country: data.country,
-        },
+    const user = await prisma.user.findUnique({
+      where: {
+        email: data.email,
       },
-      dropoff: {
-        create: {
+    });
+
+    if (user) {
+      await prisma.user.update({
+        where: {
+          id: user.id,
+        },
+        data: {
+          address: {
+            upsert: {
+              create: {
+                streetAddress: data.streetAddress,
+                city: data.city,
+                state: data.state,
+                zipCode: data.zipCode,
+                country: data.country,
+              },
+              update: {
+                streetAddress: data.streetAddress,
+                city: data.city,
+                state: data.state,
+                zipCode: data.zipCode,
+                country: data.country,
+              },
+            },
+          },
+        },
+      });
+      await prisma.dropOff.create({
+        data: {
           separateWash: data.separateWash,
           handDried: data.handDried,
           notes: data.additionalInfo,
+          user: {
+            connect: {
+              email: user.email as string,
+            },
+          },
         },
-      },
-    };
+      });
+    } else {
+      const booking: Prisma.UserCreateInput = {
+        email: data.email,
+        name: data.name,
+        phoneNumber: data.phone,
+        address: {
+          create: {
+            streetAddress: data.streetAddress,
+            city: data.city,
+            state: data.state,
+            zipCode: data.zipCode,
+            country: data.country,
+          },
+        },
+        dropoffs: {
+          create: {
+            separateWash: data.separateWash,
+            handDried: data.handDried,
+            notes: data.additionalInfo,
+          },
+        },
+      };
 
-    await prisma.user.create({
-      data: booking,
-    });
+      await prisma.user.create({
+        data: booking,
+      });
+    }
     revalidatePath("/");
     redirect("/");
   } catch (err) {
+    if (isRedirectError(err)) {
+      throw err;
+    }
     return {
       success: false,
       message: "An unexpected error occured",
